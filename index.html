@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Track Popularity Over the Years</h1>
+    <div class="container">
+        <h1>Track Popularity Over the Years</h1>
 
-    <div>
-        <label for="languageFilter">Filter by Language:</label>
-        <select id="languageFilter">
-            <option value="all">All Languages</option>
-            <option value="English">English</option>
-            <option value="Tamil">Tamil</option>
-            <option value="Unknown">Unknown</option>
-        </select>
-        <button id="sortBars">Sort by Popularity</button>
-        <button id="download">Download Chart</button>
+        <div>
+            <label for="languageFilter">Filter by Language:</label>
+            <select id="languageFilter">
+                <option value="all">All Languages</option>
+                <option value="English">English</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+            <button id="sortBars">Sort by Popularity</button>
+            <button id="download">Download Chart</button>
+        </div>
+
+        <div id="chart"></div>
+
+        <p><a href="documentation.html">View Documentation</a></p>
     </div>
-
-    <div id="chart"></div>
-
-    <p><a href="documentation.html" target="_blank">View Documentation</a></p>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
