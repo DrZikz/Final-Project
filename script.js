@@ -51,6 +51,12 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
     const yAxis = svg.append("g")
         .call(d3.axisLeft(y));
 
+    // Add Tooltip
+    const tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
     // Add Bars
     const bars = svg.selectAll(".bar")
         .data(data)
@@ -61,7 +67,25 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
         .attr("y", d => y(d.popularity))
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(d.popularity))
-        .attr("fill", d => color(d.popularity));
+        .attr("fill", d => color(d.popularity))
+        .on("mouseover", function (event, d) {
+            d3.select(this).attr("fill", "orange");
+
+            tooltip.transition().duration(200).style("opacity", 1);
+            tooltip.html(`
+                <strong>Year:</strong> ${d.year}<br>
+                <strong>Popularity:</strong> ${d.popularity}<br>
+                <strong>Language:</strong> ${d.language}<br>
+                <strong>Artist:</strong> ${d.artist_name}<br>
+                <strong>Track:</strong> ${d.track_name}
+            `)
+                .style("left", `${event.pageX + 10}px`)
+                .style("top", `${event.pageY - 20}px`);
+        })
+        .on("mouseout", function () {
+            d3.select(this).attr("fill", d => color(d.popularity));
+            tooltip.transition().duration(200).style("opacity", 0);
+        });
 
     // Filter by Language
     d3.select("#languageFilter").on("change", function () {
