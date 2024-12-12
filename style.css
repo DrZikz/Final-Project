@@ -1,39 +1,69 @@
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
-}
-
-h1 {
-    margin: 20px;
-    font-size: 24px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
     color: #333;
 }
 
-#chart {
-    margin: 20px auto;
+/* Container for content */
+.container {
     width: 90%;
-    max-width: 800px;
-    border: 1px solid #ddd;
-    padding: 10px;
+    max-width: 1200px; /* Limits the size for larger screens */
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.tooltip {
-    font-size: 12px;
-    padding: 5px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    position: absolute;
-    pointer-events: none;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+/* Heading styles */
+h1, h2 {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.bar {
-    transition: fill 0.3s;
+/* Chart container */
+#chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
-.bar:hover {
-    fill: orange;
+/* Images */
+img {
+    max-width: 100%; /* Ensures images scale to container */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons and Dropdown */
+button, select {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+/* Video Styling */
+iframe {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer link */
+p {
+    text-align: center;
+    margin: 20px 0;
 }
