@@ -37,8 +37,20 @@ h1, h2 {
 
 /* Highlight on hover */
 .bar:hover {
-    fill: orange;
+    fill: orange !important; /* Ensures hover effect overrides inline styles */
     cursor: pointer;
+}
+
+/* Tooltip Styling */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 10;
 }
 
 /* Images */
