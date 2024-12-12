@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Popularity Visualization Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Track Popularity Visualization Documentation</h1>
+
+    <h2>Design Process</h2>
+    <p>
+        The creation of the Track Popularity Visualization was a thoughtful and iterative process. It started with defining the goals of the visualization: to explore the popularity of tracks over time, identify trends, and provide insights into language-based distributions in music. 
+    </p>
+    <p>
+        The dataset was cleaned to ensure accuracy and usability. This involved addressing missing or irrelevant data, converting numerical fields appropriately, and categorizing entries based on language. Early sketches explored various visualization types, including scatterplots, line charts, and bar charts. Ultimately, the bar chart was chosen for its simplicity and effectiveness in comparing discrete categories (years).
+    </p>
+    <p>
+        Initial designs were static and lacked interactivity, but subsequent iterations added dynamic features like tooltips and filtering by language to make the visualization more engaging. These features were inspired by the need to allow users to explore subsets of the data and gain deeper insights.
+    </p>
+
+    <h2>Rationale for Design Choices</h2>
+    <p>
+        <strong>Chart Type:</strong> A bar chart was selected because it clearly displays track popularity across years, allowing for easy comparison. Its straightforward layout ensures users can immediately grasp the trends.
+    </p>
+    <p>
+        <strong>Color Encoding:</strong> A gradient color scheme was used, ranging from light blue to dark blue, to represent popularity. This visually conveys the intensity of popularity values, with darker colors indicating higher popularity. The gradient ensures the chart is both functional and aesthetically pleasing.
+    </p>
+    <p>
+        <strong>Interactivity:</strong> Interactive elements such as tooltips and a dropdown filter were included to enhance usability. Tooltips provide additional details about each bar, such as artist names, track titles, and language, which enrich the user's understanding of the data. The dropdown filter enables users to focus on specific languages, making the chart adaptable to different queries.
+    </p>
+    <p>
+        <strong>Axis Titles and Label Rotation:</strong> To ensure clarity, axis titles (“Year” and “Popularity”) were added. The x-axis labels were rotated by 45 degrees to prevent overlap, particularly given the large range of years from 1971 to 2024. These adjustments improve readability and navigation.
+    </p>
+
+    <h2>Key Findings and Insights</h2>
+    <p>
+        <strong>Popularity Trends Over Time:</strong> The chart highlights fluctuations in track popularity across decades. Notably, certain years, such as the early 2000s, exhibit higher average popularity scores, reflecting cultural or technological shifts in music consumption.
+    </p>
+    <p>
+        <strong>Language Distribution:</strong> Filtering by language revealed that English tracks dominate the dataset, accounting for the majority of entries. However, Tamil tracks and tracks with unknown language codes also provide interesting variations and reflect diversity.
+    </p>
+    <p>
+        <strong>Influential Tracks and Artists:</strong> Hovering over individual bars reveals details about specific tracks and their artists, offering insights into key contributors to the dataset’s popularity trends. For instance, popular tracks from certain years often correlate with well-known artists or cultural phenomena.
+    </p>
+
+    <h2>Screenshots</h2>
+    <p>The following screenshots illustrate the functionality of the visualization:</p>
+    <ul>
+        <li><img src="full_chart_view.png" alt="Full Chart View" style="width:100%; max-width:800px;"></li>
+        <li><img src="filtered_view.png" alt="Filtered View" style="width:100%; max-width:800px;"></li>
+        <li><img src="tooltip_example.png" alt="Tooltip Example" style="width:100%; max-width:800px;"></li>
+    </ul>
+
+    <h2>Video Demonstration</h2>
+    <p>Watch the video demonstration below:</p>
+    <iframe width="800" height="450" src="your_video_url_here" frameborder="0" allowfullscreen></iframe>
+
+    <p><a href="index.html">Back to Visualization</a></p>
+</body>
+</html>
