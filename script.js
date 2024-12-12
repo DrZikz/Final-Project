@@ -18,9 +18,6 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
     dataset.forEach(d => {
         d.year = +d.year || 1970;
         d.popularity = +d.popularity || 0;
-        d.danceability = +d.danceability || 0;
-        d.energy = +d.energy || 0;
-        d.valence = +d.valence || 0;
     });
 
     data = dataset;
@@ -51,11 +48,22 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
     const yAxis = svg.append("g")
         .call(d3.axisLeft(y));
 
-    // Add Tooltip
-    const tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+    // Add X-Axis Title
+    svg.append("text")
+        .attr("class", "x-axis-title")
+        .attr("text-anchor", "middle")
+        .attr("x", width / 2)
+        .attr("y", height + 60) // Position below the x-axis
+        .text("Year");
+
+    // Add Y-Axis Title
+    svg.append("text")
+        .attr("class", "y-axis-title")
+        .attr("text-anchor", "middle")
+        .attr("x", -(height / 2)) // Rotate text
+        .attr("y", -50)
+        .attr("transform", "rotate(-90)") // Rotate to be vertical
+        .text("Popularity");
 
     // Add Bars
     const bars = svg.selectAll(".bar")
@@ -69,7 +77,7 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
         .attr("height", d => height - y(d.popularity))
         .attr("fill", d => color(d.popularity))
         .on("mouseover", function (event, d) {
-            d3.select(this).attr("fill", "orange"); // Highlight on hover
+            d3.select(this).attr("fill", "orange");
 
             tooltip.transition().duration(200).style("opacity", 1);
             tooltip.html(`
@@ -83,10 +91,16 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
                 .style("top", `${event.pageY - 20}px`);
         })
         .on("mouseout", function (event, d) {
-            d3.select(this).attr("fill", color(d.popularity)); // Revert color
+            d3.select(this).attr("fill", color(d.popularity));
 
             tooltip.transition().duration(200).style("opacity", 0);
         });
+
+    // Tooltip
+    const tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
     // Filter by Language
     d3.select("#languageFilter").on("change", function () {
