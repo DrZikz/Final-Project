@@ -69,7 +69,7 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
         .attr("height", d => height - y(d.popularity))
         .attr("fill", d => color(d.popularity))
         .on("mouseover", function (event, d) {
-            d3.select(this).attr("fill", "orange");
+            d3.select(this).attr("fill", "orange"); // Highlight on hover
 
             tooltip.transition().duration(200).style("opacity", 1);
             tooltip.html(`
@@ -82,8 +82,9 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
                 .style("left", `${event.pageX + 10}px`)
                 .style("top", `${event.pageY - 20}px`);
         })
-        .on("mouseout", function () {
-            d3.select(this).attr("fill", d => color(d.popularity));
+        .on("mouseout", function (event, d) {
+            d3.select(this).attr("fill", color(d.popularity)); // Revert color
+
             tooltip.transition().duration(200).style("opacity", 0);
         });
 
