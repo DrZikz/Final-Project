@@ -1,5 +1,5 @@
 // Chart Dimensions
-const margin = { top: 50, right: 30, bottom: 100, left: 80 }; // Adjusted margins for axis titles
+const margin = { top: 50, right: 30, bottom: 100, left: 80 };
 const width = 1500 - margin.left - margin.right;
 const height = 500 - margin.top - margin.bottom;
 
@@ -51,22 +51,6 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
     const yAxis = svg.append("g")
         .call(d3.axisLeft(y));
 
-    // Add Axis Titles
-    svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", height + 50) // Position below x-axis
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .text("Year"); // X-axis title
-
-    svg.append("text")
-        .attr("x", -height / 2)
-        .attr("y", -50) // Position to the left of y-axis
-        .attr("text-anchor", "middle")
-        .attr("transform", "rotate(-90)")
-        .style("font-size", "16px")
-        .text("Popularity"); // Y-axis title
-
     // Add Bars
     const bars = svg.selectAll(".bar")
         .data(data)
@@ -77,25 +61,9 @@ d3.csv("Expanded_Cleaned_Data_for_D3_Visualization.csv").then(dataset => {
         .attr("y", d => y(d.popularity))
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(d.popularity))
-        .attr("fill", d => color(d.popularity))
-        .on("mouseover", (event, d) => {
-            const tooltip = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .html(`
-                    <strong>Year:</strong> ${d.year}<br>
-                    <strong>Popularity:</strong> ${d.popularity}<br>
-                    <strong>Language:</strong> ${d.language}<br>
-                    <strong>Artist:</strong> ${d.artist_name}<br>
-                    <strong>Track:</strong> ${d.track_name}
-                `)
-                .style("left", `${event.pageX + 5}px`)
-                .style("top", `${event.pageY - 28}px`);
-        })
-        .on("mouseout", () => {
-            d3.select(".tooltip").remove();
-        });
+        .attr("fill", d => color(d.popularity));
 
-    // Filter by Language (Adjust Opacity)
+    // Filter by Language
     d3.select("#languageFilter").on("change", function () {
         const selectedLanguage = this.value;
 
