@@ -30,6 +30,17 @@ h1, h2 {
     margin-top: 30px;
 }
 
+/* Default bar style */
+.bar {
+    transition: fill 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Highlight on hover */
+.bar:hover {
+    fill: orange;
+    cursor: pointer;
+}
+
 /* Images */
 img {
     max-width: 100%; /* Ensures images scale to container */
